@@ -93,18 +93,25 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LayoutHelper.cs" />
+    <Compile Include="Modules\FilterBySide.cs" />
+    <Compile Include="Modules\PadWithRandomRoom.cs" />
     <Compile Include="Patches\AssignMenuRequests_Patch.cs" />
     <Compile Include="CustomSettingAppliance.cs" />
     <Compile Include="Patches\GrantNecessaryAppliances_Patch.cs" />
     <Compile Include="Patches\GroupHandleReadyToOrder_Patch.cs" />
+    <Compile Include="Patches\LayoutBuilder_Patch.cs" />
     <Compile Include="Randomization\RandomFlowers.cs" />
+    <Compile Include="Randomization\RandomMaterials.cs" />
     <Compile Include="Setting\Appliances\PicnicFloor.cs" />
+    <Compile Include="Setting\Appliances\PicnicBlanket.cs" />
     <Compile Include="Setting\Appliances\PicnicFlower.cs" />
     <Compile Include="Setting\PicnicCompositeUnlockPack.cs" />
+    <Compile Include="Setting\PicnicDecorator.cs" />
     <Compile Include="Setting\PicnicLayout.cs" />
     <Compile Include="Setting\PicnicSetting.cs" />
     <Compile Include="Unlocks\BuffetUnlock.cs" />

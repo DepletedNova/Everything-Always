@@ -17,7 +17,7 @@ namespace EverythingAlways.Unlocks
 
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            (Locale.English, LocalisationUtils.CreateUnlockInfo("Feast", "Customers can order any food at any phase. They'll eat food faster and make more mess.", ""))
+            (Locale.English, LocalisationUtils.CreateUnlockInfo("Feast", "Customers can order any food at any phase. They'll eat more food at a faster pace and make more mess.", "Oh no"))
         };
 
         public override List<UnlockEffect> Effects => new()
@@ -47,6 +47,10 @@ namespace EverythingAlways.Unlocks
             new StatusEffect()
             {
                 Status = PICNIC_STATUS
+            },
+            new StatusEffect()
+            {
+                Status = BUFFET_STATUS
             }
         };
     }

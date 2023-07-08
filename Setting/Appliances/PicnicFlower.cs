@@ -11,7 +11,7 @@ namespace EverythingAlways.Setting.Appliances
 
         public override void SetupPrefab(GameObject prefab)
         {
-            var random = prefab.AddComponent<RandomFlowers>();
+            prefab.AddComponent<RandomFlowers>();
         }
     }
 }

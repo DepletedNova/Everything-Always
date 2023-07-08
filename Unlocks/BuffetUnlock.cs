@@ -19,6 +19,11 @@ namespace EverythingAlways.Unlocks
         public override UnlockGroup UnlockGroup => UnlockGroup.Generic;
         public override CardType CardType => CardType.Default;
 
+        public override List<Unlock> HardcodedBlockers => new()
+        {
+            GetCastedGDO<Unlock, PicnicUnlock>()
+        };
+
         public override List<UnlockEffect> Effects => new()
         {
             new StatusEffect()
@@ -29,7 +34,7 @@ namespace EverythingAlways.Unlocks
 
         public override List<(Locale, UnlockInfo)> InfoList => new()
         {
-            (Locale.English, LocalisationUtils.CreateUnlockInfo("Buffet", "Customers can now order sides during the dessert and starter phases.", "Best hope you have metal tables."))
+            (Locale.English, LocalisationUtils.CreateUnlockInfo("Buffet", "Customers can now order sides during the dessert and starter phases.", "Best hope you have metal tables!"))
         };
     }
 }

@@ -15,18 +15,17 @@ namespace EverythingAlways.Setting
     {
         public override string UniqueNameID => "Picnic Setting";
         public override GameObject Prefab => GetPrefab("Picnic Snowglobe");
-        public override WeatherMode WeatherMode => WeatherMode.Fireflies;
+        public override WeatherMode WeatherMode => WeatherMode.Wind;
+        public override bool AlwaysLight => true;
         public override Unlock StartingUnlock => GetCastedGDO<Unlock, PicnicUnlock>();
         public override UnlockPack UnlockPack => GetCastedGDO<CompositeUnlockPack, PicnicCompositeUnlockPack>();
         public override List<IDecorationConfiguration> Decorators => new()
         {
-            new CountrysideDecorator.DecorationsConfiguration()
+            new PicnicDecorator.DecorationsConfiguration()
             {
                 Ground = GetCastedGDO<Appliance, PicnicFloor>(),
-                BorderSpacing = 1,
                 OnlyDecorateLowerHalf = false,
                 Cobblestone = GetGDO<Appliance>(ApplianceReferences.Cobblestone),
-                FrontBorder = null,
                 Scatters = new()
                 {
                     new()

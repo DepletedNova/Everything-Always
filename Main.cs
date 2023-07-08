@@ -15,6 +15,7 @@ using CustomSettingsAndLayouts;
 using KitchenLib.References;
 using System.Collections.Generic;
 using Kitchen;
+using Unity.Entities;
 
 namespace EverythingAlways
 {
@@ -33,8 +34,11 @@ namespace EverythingAlways
 
             AddGameData();
 
+            AddMaterials();
+
             Events.BuildGameDataEvent += delegate (object s, BuildGameDataEventArgs args)
             {
+                SetupGardenGate();
 
                 var settingGDO = GetCustomGameDataObject<PicnicSetting>();
                 if (settingGDO?.GameDataObject != null)
@@ -43,12 +47,22 @@ namespace EverythingAlways
                     Registry.GrantCustomSetting(rSetting);
                     Registry.AddSettingLayout(rSetting, new List<LayoutProfile>
                     {
-                        //GetGDO<LayoutProfile>(LayoutProfileReferences.DinerLayout),
-                        //GetGDO<LayoutProfile>(LayoutProfileReferences.BasicLayout),
                         GetCastedGDO<LayoutProfile, PicnicLayout>()
                     });
                 }
             };
+        }
+
+        internal void AddMaterials()
+        {
+            AddMaterial(MaterialUtils.CreateFlat("Light Stone", 0xB7B09C));
+
+            // Picnic
+            AddMaterial(MaterialUtils.CreateFlat("Picnic - Blue", 0x2E3C92));
+            AddMaterial(MaterialUtils.CreateFlat("Picnic - Light Blue", 0x6F78B3));
+
+            AddMaterial(MaterialUtils.CreateFlat("Picnic - Yellow", 0xEFB300));
+            AddMaterial(MaterialUtils.CreateFlat("Picnic - Light Yellow", 0xFFD460));
         }
 
         private static new Main instance;
@@ -57,6 +71,27 @@ namespace EverythingAlways
             if (instance.GetOrCreate<SGlobalStatusList>().Has(BUFFET_STATUS))
                 return MenuPhase.Main;
             return phase.Phase;
+        }
+
+        internal static GameObject FenceGate;
+        internal void SetupGardenGate()
+        {
+            FenceGate = GetPrefab("Fence Gate");
+
+            FenceGate.ApplyMaterialToChild("Post", "Wood 2");
+            for (int i = 0; i < FenceGate.GetChildCount(); i++)
+            {
+                var child = FenceGate.GetChild(i);
+                if (child.name.Contains("Door"))
+                {
+                    var door = child.GetChild("Door");
+                    door.ApplyMaterial("Wood 1", "Wood 2");
+
+                    //var phase = child.TryAddComponent<PhaseWhenStuck>();
+                    //phase.Collider = door.GetComponent<BoxCollider>();
+                    //phase.Joint = door.GetComponent<HingeJoint>();
+                }
+            }
         }
 
         internal void AddGameData()

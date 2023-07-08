@@ -1,15 +1,11 @@
-﻿using Kitchen.Layouts.Modules;
+﻿using EverythingAlways.Modules;
 using Kitchen.Layouts;
+using Kitchen.Layouts.Modules;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.References;
-using KitchenLib.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using XNode;
 
 namespace EverythingAlways.Setting
@@ -17,6 +13,8 @@ namespace EverythingAlways.Setting
     internal class PicnicLayout : CustomLayoutProfile
     {
         public override string UniqueNameID => "Picnic Layout Profile";
+
+        public override int MaximumTables => 2;
 
         public override GameDataObject Table => GetExistingGDO(ApplianceReferences.TableLarge);
         public override GameDataObject Counter => GetExistingGDO(ApplianceReferences.Countertop);
@@ -54,99 +52,106 @@ namespace EverythingAlways.Setting
             new(5, "Output", 6, "Input"),
 
             new(6, "Output", 7, "Input"),
-            new(7, "Output", 10, "Input"),
+            new(7, "Output", 11, "Input"),
 
             new(6, "Output", 8, "Input"),
+            new(8, "Output", 9, "Input"),
 
             new(8, "Output", 9, "Input"),
-            new(9, "Output", 10, "AppendFrom"),
-            new(10, "Output", 14, "AppendFrom"),
+            new(9, "Output", 10, "Input"),
+            new(10, "Output", 11, "AppendFrom"),
+            new(11, "Output", 16, "Input"),
 
-            new(8, "Output", 11, "Input"),
-            new(11, "Output", 12, "Input"),
+            new(8, "Output", 12, "Input"),
             new(12, "Output", 13, "Input"),
             new(13, "Output", 14, "Input"),
-
             new(14, "Output", 15, "Input"),
-            new(15, "Output", 16, "Input"),
+            new(15, "Output", 16, "AppendFrom"),
+
             new(16, "Output", 17, "Input"),
+            new(17, "Output", 18, "Input"),
         };
 
         public override LayoutGraph Graph => CreateLayoutGraph(new() {
                 new RoomGrid() // 0
                 {
                     Width = 4,
-                    Height = 3,
-                    Type = RoomType.Unassigned,
-                    SetType = false
+                    Height = 1,
+                    SetType = true,
+                    Type = RoomType.Kitchen
                 },
-                new MergeRoomsByType(), // 1
-                new PadWithRoom() // 2
+                new PadWithRoom() // 1
                 {
-                    Right = 3,
-
-                    Left = 0,
-                    Above = 0,
-                    Below = 0,
-                    Type = RoomType.Kitchen,
+                    Right = 1,
+                    Left = 1,
+                    Type = RoomType.Garden
                 },
-                new SwapRoomType() // 3
+                new PadWithRandomRoom() // 2
                 {
-                    Type = RoomType.Dining,
-                    X = 0,
-                    Y = 0
+                    doHorizontal = true,
+                    Distance = 2,
+                    Type = RoomType.Dining
                 },
-                new SplitRooms() // 4
+                new PadWithRoom() // 3
+                {
+                    Below = 2,
+                    Type = RoomType.Garden
+                },
+                new MergeRoomsByType(), // 4
+                new SplitRooms() // 5
                 {
                     UniformX = 1,
-                    UniformY = 1,
-                    RandomX = 0,
-                    RandomY = 0,
+                    UniformY = 2,
+                    RandomX = 2,
+                    RandomY = 2,
                 },
-                new MergeRoomsByType(), // 5
                 new RecentreLayout(), // 6
 
                 new CreateFrontDoor() // 7
                 {
-                    Type = RoomType.Dining,
+                    Type = RoomType.Garden,
                     ForceFirstHalf = false
                 },
 
                 new FindAllFeatures() // 8
                 {
-                    Feature = FeatureType.Hatch
+                    Feature = FeatureType.Door
                 },
 
-                new FilterByFreeSpace(), // 9
-
-                new AppendFeatures(), // 10
-
-                new FilterOnePerPair(), // 11
-                new MoveFeatureInDirection() // 12
+                new FilterBySide() // 9
                 {
-                    OffsetX = 0,
-                    OffsetY = -10,
+                    Horizontal = true
                 },
-                new SwitchFeatures() // 13
+                new FilterOnePerPair(), // 10
+
+                new AppendFeatures(), // 11
+
+                new FilterByRoom() // 12
                 {
-                    SetToFeature = FeatureType.Door
+                    RemoveMode = false,
+                    Type1 = RoomType.Kitchen,
+                    FilterSecond = true,
+                    Type2 = RoomType.Garden
+                },
+                new FilterByFreeSpace(), // 13
+                new FilterBySide() // 14
+                {
+                    Horizontal = false
+                },
+                new SwitchFeatures() // 15
+                {
+                    SetToFeature = FeatureType.Hatch
                 },
 
-                new AppendFeatures(), // 14
+                new AppendFeatures(), // 16
 
-                new RequireAccessible() // 15
+                new RequireAccessible() // 17
                 {
                     AllowGardens = true,
                     ResultStatus = true
                 },
-                new RequireFeatures() // 16
-                {
-                    Type = FeatureType.Hatch,
-                    Minimum = 3,
-                    ResultStatus = true,
-                },
-
-                new Output() // 17
+                
+                new Output() // 18
             });
 
 
