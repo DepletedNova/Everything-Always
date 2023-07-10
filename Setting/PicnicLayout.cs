@@ -73,85 +73,33 @@ namespace EverythingAlways.Setting
         };
 
         public override LayoutGraph Graph => CreateLayoutGraph(new() {
-                new RoomGrid() // 0
-                {
-                    Width = 4,
-                    Height = 1,
-                    SetType = true,
-                    Type = RoomType.Kitchen
-                },
-                new PadWithRoom() // 1
-                {
-                    Right = 1,
-                    Left = 1,
-                    Type = RoomType.Garden
-                },
-                new PadWithRandomRoom() // 2
-                {
-                    doHorizontal = true,
-                    Distance = 2,
-                    Type = RoomType.Dining
-                },
-                new PadWithRoom() // 3
-                {
-                    Below = 2,
-                    Type = RoomType.Garden
-                },
-                new MergeRoomsByType(), // 4
-                new SplitRooms() // 5
-                {
-                    UniformX = 1,
-                    UniformY = 2,
-                    RandomX = 2,
-                    RandomY = 2,
-                },
-                new RecentreLayout(), // 6
+                CreateRoomGrid(3, 2, RoomType.Kitchen),
+                CreatePadWithRoom(0, 1, 1, 0, RoomType.Garden),
+                CreatePadWithRandomRoom(true, false, 2, RoomType.Dining),
+                CreatePadWithRoom(0, 0, 0, 3, RoomType.Garden),
+                CreateMergeRoomsByType(),
+                CreateSplitRooms(1, 1, 2, 0),
+                CreateRecentreLayout(),
 
-                new CreateFrontDoor() // 7
-                {
-                    Type = RoomType.Garden,
-                    ForceFirstHalf = false
-                },
+                CreateCreateFrontDoor(RoomType.Garden, true),
 
-                new FindAllFeatures() // 8
-                {
-                    Feature = FeatureType.Door
-                },
+                CreateFindAllFeatures(FeatureType.Door),
 
-                new FilterBySide() // 9
-                {
-                    Horizontal = true
-                },
-                new FilterOnePerPair(), // 10
+                CreateFilterBySide(true),
+                CreateFilterOnePerPair(),
 
-                new AppendFeatures(), // 11
+                CreateAppendFeatures(),
 
-                new FilterByRoom() // 12
-                {
-                    RemoveMode = false,
-                    Type1 = RoomType.Kitchen,
-                    FilterSecond = true,
-                    Type2 = RoomType.Garden
-                },
-                new FilterByFreeSpace(), // 13
-                new FilterBySide() // 14
-                {
-                    Horizontal = false
-                },
-                new SwitchFeatures() // 15
-                {
-                    SetToFeature = FeatureType.Hatch
-                },
+                CreateFilterByRoom(false, RoomType.Kitchen, true, RoomType.Garden),
+                CreateFilterByFreeSpace(),
+                CreateFilterBySide(false),
+                CreateSwitchFeatures(FeatureType.Hatch),
 
-                new AppendFeatures(), // 16
+                CreateAppendFeatures(),
 
-                new RequireAccessible() // 17
-                {
-                    AllowGardens = true,
-                    ResultStatus = true
-                },
+                CreateRequireAccessible(true, true),
                 
-                new Output() // 18
+                CreateOutput()
             });
 
 

@@ -91,11 +91,9 @@ namespace EverythingAlways.Setting
                 }
 
                 var blanket = GetCastedGDO<Appliance, PicnicBlanket>();
-                var step = bounds.size.x / 4f;
-                for (float x4 = bounds.min.x + step; x4 <= bounds.max.x - step / 2; x4 += step)
-                {
-                    NewPiece(blanket, x4, bounds.min.y + 2.5f + Random.Range(-1f, 1f));
-                }
+                NewPiece(blanket, bounds.min.x + bounds.size.x * 0.2f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));
+                NewPiece(blanket, bounds.min.x + bounds.size.x * 0.5f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));
+                NewPiece(blanket, bounds.min.x + bounds.size.x * 0.8f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));
 
                 NewPiece(AssetReference.OutdoorMovementBlocker, bounds.min.x - 1f, bounds.min.y - 1f);
                 NewPiece(AssetReference.OutdoorMovementBlocker, bounds.min.x - 1f, bounds.min.y - 2f);

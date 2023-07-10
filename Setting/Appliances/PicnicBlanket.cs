@@ -15,7 +15,6 @@ namespace EverythingAlways.Setting.Appliances
             var blanket = prefab.GetChild("blanket");
             blanket.TryAddComponent<RandomMaterials>();
             blanket.TryAddComponent<Spin>();
-            blanket.TryAddComponent<Jitter>().Distance = 0.25f;
         }
     }
 }

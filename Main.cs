@@ -22,7 +22,7 @@ namespace EverythingAlways
     public class Main : BaseMod
     {
         public const string GUID = "Nova.EverythingAlways";
-        public const string VERSION = "0.1.0";
+        public const string VERSION = "0.1.2";
 
         public Main() : base(GUID, "Everything Always", "Depleted Supernova#1957", VERSION, ">=1.0.0", Assembly.GetExecutingAssembly()) { instance = this; }
 
