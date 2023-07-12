@@ -43,6 +43,11 @@ namespace EverythingAlways.Setting
                         Appliance = GetCastedGDO<Appliance, PicnicFlower>(),
                         Probability = 0.5f
                     },
+                    new()
+                    {
+                        Appliance = GetCastedGDO<Appliance, BackdropPicnicBlanket>(),
+                        Probability = 0.05f
+                    },
                 }
             }
         };

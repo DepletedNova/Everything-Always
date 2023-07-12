@@ -14,14 +14,15 @@ namespace EverythingAlways.Unlocks
         public override string UniqueNameID => "Buffet Unlock";
 
         public override bool IsUnlockable => true;
-        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Medium;
+        public override Unlock.RewardLevel ExpReward => Unlock.RewardLevel.Large;
         public override DishCustomerChange CustomerMultiplier => DishCustomerChange.LargeDecrease;
         public override UnlockGroup UnlockGroup => UnlockGroup.Generic;
         public override CardType CardType => CardType.Default;
 
         public override List<Unlock> HardcodedBlockers => new()
         {
-            GetCastedGDO<Unlock, PicnicUnlock>()
+            GetCastedGDO<Unlock, PicnicUnlock>(),
+            GetGDO<Unlock>(746549422)
         };
 
         public override List<UnlockEffect> Effects => new()

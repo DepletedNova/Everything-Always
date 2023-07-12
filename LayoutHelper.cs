@@ -53,6 +53,13 @@ namespace EverythingAlways
 
         public static MergeRoomsByType CreateMergeRoomsByType() => ScriptableObject.CreateInstance<MergeRoomsByType>();
 
+        public static InsertRandomRoom CreateInsertRandomRoom(RoomType Type)
+        {
+            var module = ScriptableObject.CreateInstance<InsertRandomRoom>();
+            module.Type = Type;
+            return module;
+        }
+
         public static SplitRooms CreateSplitRooms(int UniformX, int UniformY, int RandomX, int RandomY)
         {
             var module = ScriptableObject.CreateInstance<SplitRooms>();
@@ -60,6 +67,15 @@ namespace EverythingAlways
             module.UniformY = UniformY;
             module.RandomX = RandomX;
             module.RandomY = RandomY;
+            return module;
+        }
+
+        public static SplitLine CreateSplitLine(int Position, bool IsRow, int Count)
+        {
+            var module = ScriptableObject.CreateInstance<SplitLine>();
+            module.Position = Position;
+            module.Count = Count;
+            module.IsRow = IsRow;
             return module;
         }
 
@@ -87,11 +103,18 @@ namespace EverythingAlways
             return module;
         }
 
+        public static FilterSelectCount CreateFilterSelectCount(int Count)
+        {
+            var module = ScriptableObject.CreateInstance<FilterSelectCount>();
+            module.Count = Count;
+            return module;
+        }
+
         public static FilterOnePerPair CreateFilterOnePerPair() => ScriptableObject.CreateInstance<FilterOnePerPair>();
 
         public static AppendFeatures CreateAppendFeatures() => ScriptableObject.CreateInstance<AppendFeatures>();
 
-        public static FilterByRoom CreateFilterByRoom(bool RemoveMode, RoomType Type1, bool FilterSecond, RoomType Type2)
+        public static FilterByRoom CreateFilterByRoom(bool RemoveMode, RoomType Type1, bool FilterSecond, RoomType Type2 = RoomType.NoRoom)
         {
             var module = ScriptableObject.CreateInstance<FilterByRoom>();
             module.RemoveMode = RemoveMode;

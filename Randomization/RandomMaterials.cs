@@ -8,10 +8,10 @@ namespace EverythingAlways.Randomization
     {
         private void Start()
         {
-            gameObject.ApplyMaterial(Materials[Random.Range(0, Materials.Count)]);
+            gameObject.ApplyMaterial(Materials[Random.Range(0, Materials.Length)]);
         }
 
-        public List<string[]> Materials = new()
+        public string[][] Materials = new[]
         {
             new[] { "Picnic - Light Yellow", "Picnic - Yellow", "Plastic - White" },
             new[] { "Picnic - Light Blue", "Picnic - Blue", "Plastic - White" },

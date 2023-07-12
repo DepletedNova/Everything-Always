@@ -35,7 +35,8 @@
     <Reference Include="0Harmony">
       <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\1599600\2949018507\0Harmony.dll</HintPath>
     </Reference>
-    <Reference Include="CustomSettingsAndLayouts-Workshop">
+    <Reference Include="CustomSettingsAndLayouts-Workshop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\1599600\2990006305\CustomSettingsAndLayouts-Workshop.dll</HintPath>
     </Reference>
     <Reference Include="Kitchen.Common, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -107,13 +108,20 @@
     <Compile Include="Patches\LayoutBuilder_Patch.cs" />
     <Compile Include="Randomization\RandomFlowers.cs" />
     <Compile Include="Randomization\RandomMaterials.cs" />
+    <Compile Include="Setting\Appliances\BackdropBlanket.cs" />
+    <Compile Include="Setting\Appliances\PicnicBalloons.cs" />
+    <Compile Include="Setting\Appliances\PicnicBasket.cs" />
     <Compile Include="Setting\Appliances\PicnicFloor.cs" />
     <Compile Include="Setting\Appliances\PicnicBlanket.cs" />
     <Compile Include="Setting\Appliances\PicnicFlower.cs" />
+    <Compile Include="CustomLayout.cs" />
+    <Compile Include="Setting\PicnicCardsPack.cs" />
     <Compile Include="Setting\PicnicCompositeUnlockPack.cs" />
     <Compile Include="Setting\PicnicDecorator.cs" />
     <Compile Include="Setting\PicnicLayout.cs" />
     <Compile Include="Setting\PicnicSetting.cs" />
+    <Compile Include="Setting\LargePicnicLayout.cs" />
+    <Compile Include="Setting\SidePicnicLayout.cs" />
     <Compile Include="Unlocks\BuffetUnlock.cs" />
     <Compile Include="Unlocks\PicnicUnlock.cs" />
     <Compile Include="Main.cs" />

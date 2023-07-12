@@ -14,7 +14,7 @@ namespace EverythingAlways.Randomization
                 var circularRandom = Random.insideUnitCircle * Distance;
                 var gameObject = Instantiate(Base);
                 gameObject.transform.SetParent(transform, false);
-                gameObject.transform.localPosition = new Vector3(circularRandom.x, Random.value * 0.25f, circularRandom.y);
+                gameObject.transform.localPosition = new Vector3(circularRandom.x, -0.025f, circularRandom.y);
                 gameObject.transform.rotation = Quaternion.Euler(0f, (float)Random.Range(0, 360f), 0);
                 gameObject.transform.localScale = Random.Range(1f, 1.25f) * Vector3.one;
                 gameObject.ApplyMaterial(RandomMaterials[Random.Range(0, RandomMaterials.Count)]);

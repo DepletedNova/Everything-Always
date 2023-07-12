@@ -90,10 +90,10 @@ namespace EverythingAlways.Setting
                     NewPiece(AssetReference.OutdoorMovementBlocker, x3, bounds.min.y - 3f);
                 }
 
-                var blanket = GetCastedGDO<Appliance, PicnicBlanket>();
+                /*var blanket = GetCastedGDO<Appliance, PicnicBlanket>();
                 NewPiece(blanket, bounds.min.x + bounds.size.x * 0.2f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));
                 NewPiece(blanket, bounds.min.x + bounds.size.x * 0.5f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));
-                NewPiece(blanket, bounds.min.x + bounds.size.x * 0.8f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));
+                NewPiece(blanket, bounds.min.x + bounds.size.x * 0.8f, bounds.min.y + 2.75f + Random.Range(-1f, 1f));*/
 
                 NewPiece(AssetReference.OutdoorMovementBlocker, bounds.min.x - 1f, bounds.min.y - 1f);
                 NewPiece(AssetReference.OutdoorMovementBlocker, bounds.min.x - 1f, bounds.min.y - 2f);

@@ -12,9 +12,10 @@ namespace EverythingAlways.Setting
         public override string UniqueNameID => "Picnic Composite Unlock Pack";
         public override List<UnlockPack> Packs => new()
         {
-            GetGDO<ModularUnlockPack>(JanuaryCards),
             GetGDO<ModularUnlockPack>(FranchiseCardsPack),
             GetGDO<ModularUnlockPack>(ThemeCardsPack),
+            GetCastedGDO<ModularUnlockPack, PicnicCardsPack>(),
+            GetGDO<ModularUnlockPack>(NormalCardsPack),
         };
     }
 }

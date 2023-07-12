@@ -16,13 +16,14 @@ using KitchenLib.References;
 using System.Collections.Generic;
 using Kitchen;
 using Unity.Entities;
+using EverythingAlways.Setting.Appliances;
 
 namespace EverythingAlways
 {
     public class Main : BaseMod
     {
         public const string GUID = "Nova.EverythingAlways";
-        public const string VERSION = "0.1.2";
+        public const string VERSION = "0.2.0";
 
         public Main() : base(GUID, "Everything Always", "Depleted Supernova#1957", VERSION, ">=1.0.0", Assembly.GetExecutingAssembly()) { instance = this; }
 
@@ -47,7 +48,9 @@ namespace EverythingAlways
                     Registry.GrantCustomSetting(rSetting);
                     Registry.AddSettingLayout(rSetting, new List<LayoutProfile>
                     {
-                        GetCastedGDO<LayoutProfile, PicnicLayout>()
+                        GetCastedGDO<LayoutProfile, PicnicLayout>(),
+                        GetCastedGDO<LayoutProfile, SidePicnicLayout>(),
+                        //GetCastedGDO<LayoutProfile, LargePicnicLayout>()
                     });
                 }
             };
@@ -61,8 +64,8 @@ namespace EverythingAlways
             AddMaterial(MaterialUtils.CreateFlat("Picnic - Blue", 0x2E3C92));
             AddMaterial(MaterialUtils.CreateFlat("Picnic - Light Blue", 0x6F78B3));
 
-            AddMaterial(MaterialUtils.CreateFlat("Picnic - Yellow", 0xEFB300));
-            AddMaterial(MaterialUtils.CreateFlat("Picnic - Light Yellow", 0xFFD460));
+            AddMaterial(MaterialUtils.CreateFlat("Picnic - Yellow", 0xE8831E));
+            AddMaterial(MaterialUtils.CreateFlat("Picnic - Light Yellow", 0xD8AB3A));
         }
 
         private static new Main instance;
