@@ -14,7 +14,6 @@ namespace EverythingAlways.Setting.Appliances
         public override string UniqueNameID => "Picnic Basket";
         public override GameObject Prefab => GetPrefab("Picnic Basket");
 
-        public override OccupancyLayer Layer => OccupancyLayer.Floor;
         public override RarityTier RarityTier => RarityTier.Common;
         public override PriceTier PriceTier => PriceTier.Free;
         public override ShoppingTags ShoppingTags => ShoppingTags.SpecialEvent;

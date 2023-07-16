@@ -31,16 +31,16 @@ namespace EverythingAlways.Unlocks
                     DecorationModifiers = DecorationValues.Neutral,
                     OrderingModifiers = new()
                     {
-                        MessFactor = 0.75f,
+                        MessFactor = 1.5f,
                         SidesModifier = 0.15f,
                         
                     },
                     PatienceModifiers = new()
                     {
                         Eating = -0.5f,
+                        Thinking = 0.25f,
                         FoodDeliverBonus = 0.5f,
-                        ProvidesQueuePatienceBoost = true,
-                        Seating = 0.5f
+                        Seating = 0.75f
                     }
                 }
             },
