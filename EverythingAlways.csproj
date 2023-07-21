@@ -66,6 +66,10 @@
     <Reference Include="MessagePack">
       <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.dll</HintPath>
     </Reference>
+    <Reference Include="MessagePack.Annotations, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp\PlateUp_Data\Managed\MessagePack.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="PreferenceSystem-Workshop">
       <HintPath>..\..\..\Program Files (x86)\Steam\steamapps\workshop\content\1599600\2949018507\PreferenceSystem-Workshop.dll</HintPath>
     </Reference>
@@ -98,6 +102,7 @@
     <Reference Include="XNode, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\CBlanket.cs" />
     <Compile Include="LayoutHelper.cs" />
     <Compile Include="Modules\FilterBySide.cs" />
     <Compile Include="Modules\PadWithRandomRoom.cs" />
@@ -105,16 +110,17 @@
     <Compile Include="CustomSettingAppliance.cs" />
     <Compile Include="Patches\GrantNecessaryAppliances_Patch.cs" />
     <Compile Include="Patches\GroupHandleReadyToOrder_Patch.cs" />
+    <Compile Include="Patches\ItemCollectionView_Patch.cs" />
     <Compile Include="Patches\LayoutBuilder_Patch.cs" />
     <Compile Include="Randomization\RandomFlowers.cs" />
-    <Compile Include="Randomization\RandomMaterials.cs" />
-    <Compile Include="Setting\Appliances\BackdropBlanket.cs" />
-    <Compile Include="Setting\Appliances\PicnicBalloons.cs" />
-    <Compile Include="Setting\Appliances\PicnicBasket.cs" />
-    <Compile Include="Setting\Appliances\PicnicFloor.cs" />
-    <Compile Include="Setting\Appliances\PicnicBlanket.cs" />
-    <Compile Include="Setting\Appliances\PicnicFlower.cs" />
+    <Compile Include="Appliances\BackdropBlanket.cs" />
+    <Compile Include="Appliances\PicnicBalloons.cs" />
+    <Compile Include="Appliances\PicnicBasket.cs" />
+    <Compile Include="Appliances\PicnicFloor.cs" />
+    <Compile Include="Appliances\PicnicBlanket.cs" />
+    <Compile Include="Appliances\PicnicFlower.cs" />
     <Compile Include="CustomLayout.cs" />
+    <Compile Include="Randomization\RandomMaterials.cs" />
     <Compile Include="Setting\PicnicCardsPack.cs" />
     <Compile Include="Setting\PicnicCompositeUnlockPack.cs" />
     <Compile Include="Setting\PicnicDecorator.cs" />
@@ -122,10 +128,12 @@
     <Compile Include="Setting\PicnicSetting.cs" />
     <Compile Include="Setting\LargePicnicLayout.cs" />
     <Compile Include="Setting\SidePicnicLayout.cs" />
+    <Compile Include="Systems\SwapBlanket.cs" />
     <Compile Include="Unlocks\BuffetUnlock.cs" />
     <Compile Include="Unlocks\PicnicUnlock.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\BlanketView.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

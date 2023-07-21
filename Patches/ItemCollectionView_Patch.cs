@@ -10,24 +10,20 @@ using KitchenData;
 
 namespace EverythingAlways.Patches
 {
-    // Many thanks to IcedMilo for basically handholding me through this. I've grown to understand transpilers a ton more thanks to them. To be noted they wrote basically all of this.
-    [HarmonyPatch]
-    static class GroupHandleReadyToOrder_Patch
+    [HarmonyPatch(typeof(ItemCollectionView), nameof(ItemCollectionView.UpdateData))]
+    static class ItemCollectionView_Patch
     {
-        public static MethodBase TargetMethod()
-        {
-            return AccessTools.FirstMethod(
-                AccessTools.FirstInner(typeof(GroupHandleReadyToOrder), t => t.Name.Contains($"c__DisplayClass_OnUpdate_LambdaJob0")), 
-                method => method.Name.Contains("OriginalLambdaBody"));
-        }
-
         static readonly List<OpCode> OPCODES_TO_MATCH = new List<OpCode>()
         {
-            OpCodes.Ldarg_3,
-            OpCodes.Ldobj,
-            OpCodes.Call,
-            OpCodes.Ldc_I4_1,
-            OpCodes.Ceq
+            OpCodes.Stloc_S,
+            OpCodes.Ldloc_S,
+            OpCodes.Conv_R4,
+            OpCodes.Ldc_R4,
+            OpCodes.Ldloc_S,
+            OpCodes.Conv_R4,
+            OpCodes.Mul,
+            OpCodes.Sub,
+            OpCodes.Ldc_R4,
         };
 
         static readonly List<object> OPERANDS_TO_MATCH = new List<object>() { };
@@ -38,7 +34,13 @@ namespace EverythingAlways.Patches
         {
             null,
             null,
-            typeof(Main).GetMethod("SidesAvailable", BindingFlags.Public | BindingFlags.Static)
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            0.45f
         };
 
         const int EXPECTED_MATCH_COUNT = 1;
@@ -46,8 +48,8 @@ namespace EverythingAlways.Patches
         [HarmonyTranspiler]
         static IEnumerable<CodeInstruction> OriginalLambdaBody_Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            Main.LogInfo("GroupHandleReadyToOrder Transpiler");
-            Main.LogInfo("Attempt to place a switch for the Buffet Card");
+            Main.LogInfo("ItemCollectionView Transpiler");
+            Main.LogInfo("Attempt to space out Side & Main orders a bit more");
             List<CodeInstruction> list = instructions.ToList();
 
             int matches = 0;
@@ -81,6 +83,7 @@ namespace EverythingAlways.Patches
                     {
                         if (matches > EXPECTED_MATCH_COUNT)
                         {
+                            Main.LogError("Number of matches found exceeded EXPECTED_MATCH_COUNT! Returning original IL.");
                             return instructions;
                         }
 

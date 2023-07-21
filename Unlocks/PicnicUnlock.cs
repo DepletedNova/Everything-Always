@@ -32,15 +32,13 @@ namespace EverythingAlways.Unlocks
                     OrderingModifiers = new()
                     {
                         MessFactor = 1.5f,
-                        SidesModifier = 0.15f,
-                        
+                        SidesModifier = 0.25f,
                     },
                     PatienceModifiers = new()
                     {
                         Eating = -0.5f,
-                        Thinking = 0.25f,
-                        FoodDeliverBonus = 0.5f,
-                        Seating = 0.75f
+                        Thinking = 0.15f,
+                        Seating = 0.7f
                     }
                 }
             },
