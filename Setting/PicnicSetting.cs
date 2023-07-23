@@ -54,7 +54,16 @@ namespace EverythingAlways.Setting
 
         public override List<(Locale, BasicInfo)> InfoList => new()
         {
-            (Locale.English, LocalisationUtils.CreateBasicInfo("Picnic", ""))
+            (Locale.English, LocalisationUtils.CreateBasicInfo("Picnic", "")),
+            (Locale.Polish, LocalisationUtils.CreateBasicInfo("Piknik", "")),
+            (Locale.Turkish, LocalisationUtils.CreateBasicInfo("Piknik", "")),
+            (Locale.ChineseSimplified, LocalisationUtils.CreateBasicInfo("野餐", "")),
+            (Locale.ChineseTraditional, LocalisationUtils.CreateBasicInfo("野餐", "")),
+            (Locale.French, LocalisationUtils.CreateBasicInfo("Pique-nique", "")),
+            (Locale.German, LocalisationUtils.CreateBasicInfo("Picknick", "")),
+            (Locale.Japanese, LocalisationUtils.CreateBasicInfo("ピクニック", "")),
+            (Locale.PortugueseBrazil, LocalisationUtils.CreateBasicInfo("Piquenique", "")),
+            (Locale.Russian, LocalisationUtils.CreateBasicInfo("Пикник", "")),
         };
 
         public override void OnRegister(RestaurantSetting gdo)
