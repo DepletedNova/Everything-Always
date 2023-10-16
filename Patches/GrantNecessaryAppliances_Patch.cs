@@ -15,7 +15,7 @@ namespace EverythingAlways.Patches
         {
             if ((bool)ReflectionUtils.GetMethod<GameSystemBase>("HasStatus").Invoke(__instance, parameters))
             {
-                __result *= 2;
+                __result /= 2;
             }
         }
     }
